@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> <!-- Menambahkan font Poppins -->
+    <style>
+        body {
+            background-color: #1e1e2f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+            overflow: hidden;
+            flex-direction: column; /* Menambahkan ini untuk tata letak vertikal */
+            position: relative; /* Agar partikel bisa diposisikan relatif */
+        }
+
+        .gift {
+            font-size: 100px; /* Ukuran gambar 🎁 */
+            cursor: pointer; /* Menunjukkan bahwa gambar dapat diklik */
+            animation: bounce 0.5s infinite alternate; /* Animasi untuk gambar */
+        }
+
+        .card {
+            background: rgba(173, 216, 230, 0.7);
+            backdrop-filter: blur(10px); /* Efek blur */
+            border-radius: 25px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideInCard 0.8s ease forwards, float 3s ease-in-out infinite; /* Animasi untuk kartu */
+            position: relative; /* Agar partikel bisa diposisikan relatif terhadap kartu */
+            overflow: hidden; /* Mencegah partikel keluar dari kartu */
+            display: none; /* Sembunyikan kartu pada awalnya */
+            max-width: 78%; /* Lebar maksimal kartu */
+            max-height: 80vh; /* Tinggi maksimal kartu */
+            overflow-y: auto; /* Scroll pada sumbu Y */
+            z-index: 1; /* Agar kartu berada di atas partikel */
+        }
+
+        .title {
+            font-size: 3em;
+            color: #ffffff;
+            margin: 0;
+            opacity: 0; /* Mulai dengan transparan */
+            animation: appearFromBottom 1s ease forwards; /* Animasi untuk judul */
+            animation-delay: 0.5s; /* Delay agar muncul setelah kartu */
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 20px 0;
+            opacity: 0; /* Mulai dengan transparan */
+            animation: appearFromBottom 1s ease forwards; /* Animasi untuk pesan */
+            animation-delay: 1s; /* Delay agar muncul setelah judul */
+            white-space: pre-line; /* Mempertahankan spasi dan baris baru */
+        }
+
+        .footer {
+            margin-top: 30px;
+        }
+
+        .signature {
+            font-size: 1.2em;
+            color: #ffffff;
+            opacity: 0.8;
+            opacity: 0; /* Mulai dengan transparan */
+            animation: appearFromBottom 1s ease forwards; /* Animasi untuk tanda tangan */
+            animation-delay: 1.5s; /* Delay agar muncul setelah pesan */
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(173, 216, 230, 0.8); /* Biru muda bercahaya */
+            pointer-events: none; /* Agar tidak mengganggu interaksi */
+            opacity: 1; /* Mulai dengan terlihat */
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes slideInCard {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes appearFromBottom {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px); /* Melayang ke atas */
+            }
+        }
+
+        /* Media Query untuk Responsivitas */
+        @media (max-width: 768px) {
+            .gift {
+                font-size: 80px; /* Ukuran gambar 🎁 lebih kecil untuk perangkat kecil */
+            }
+            .title {
+                font-size: 2.5em; /* Ukuran judul lebih kecil */
+            }
+            .message {
+                font-size: 1.2em; /* Ukuran pesan lebih kecil */
+            }
+            .signature {
+                font-size: 1em; /* Ukuran tanda tangan lebih kecil */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gift {
+                font-size: 60px; /* Ukuran gambar 🎁 lebih kecil untuk perangkat sangat kecil */
+            }
+            .title {
+                font-size: 2em; /* Ukuran judul lebih kecil */
+            }
+            .message {
+                font-size: 1em; /* Ukuran pesan lebih kecil */
+            }
+            .signature {
+                font-size: 0.9em; /* Ukuran tanda tangan lebih kecil */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gift" id="gift">🎁</div> <!-- Gambar 🎁 -->
+    
+    <div class="card" id="card">
+<h1>🎂</h1>
+        <h1 class="title">Happy Birthday!</h1>
+        <p class="message">
+بسم الله الرحمن الرحيم
+
+Selamat Ulang Tahun!
+
+Semoga di tahun yang baru ini, setiap harimu dipenuhi dengan kebahagiaan, cinta, dan keberkahan yang melimpah.
+
+Semoga Allah senantiasa memberkati setiap langkahmu dan membimbingmu dalam menjalani hidup ini. Dalam setiap keputusan yang kamu ambil, semoga kamu diberikan kebijaksanaan dan kekuatan untuk menghadapi setiap tantangan yang mungkin datang. Ingatlah bahwa setiap rintangan adalah peluang untuk tumbuh dan belajar.
+
+Aku juga berdo'a agar kesehatan selalu menyertaimu, karena dengan kesehatan yang baik, kamu dapat melakukan segala sesuatu yang kamu impikan. Semoga setiap harapan dan cita-citamu bisa terwujud, dan setiap usaha yang kamu lakukan dibalas dengan hasil yang memuaskan.
+
+Di tahun ini, semoga segala usaha dan harapanmu dikabulkan. Jadikan setiap hari sebagai kesempatan untuk membuat kenangan indah dan berharga. Ingatlah untuk selalu bersyukur atas setiap hal kecil dan besar yang datang dalam hidupmu.
+
+Selamat merayakan hari istimewa ini. Semoga kamu dikelilingi oleh orang-orang tercinta yang selalu mendukungmu, dan semoga kebahagiaan dan cinta selalu menyertaimu dalam setiap langkah perjalanan hidupmu.
+
+امين
+        </p>
+        <div class="footer">
+            <p class="signature"></p>
+        </div>
+    </div>
+
+    <script>
+        const numParticles = 30; // Jumlah partikel
+        const card = document.getElementById('card');
+        const gift = document.getElementById('gift');
+
+        gift.addEventListener('click', () => {
+            card.style.display = 'block'; // Tampilkan kartu saat gambar diklik
+            gift.style.display = 'none'; // Sembunyikan gambar 🎁 saat kartu muncul
+            
+            // Menghasilkan partikel setelah kartu muncul
+            for (let i = 0; i < numParticles; i++) {
+                createParticle();
+            }
+            // Buat partikel terus menerus
+            setInterval(createParticle, 500); // Buat partikel setiap 500ms
+        });
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 10 + 5; // Ukuran acak antara 5px dan 15px
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * window.innerWidth}px`; // Acak posisi horizontal
+            particle.style.bottom = `-20px`; // Mulai dari bawah layar
+            document.body.appendChild(particle);
+
+            // Animasi partikel bergerak ke atas
+            particle.animate([
+                { transform: 'translateY(0)', opacity: 1 },
+                { transform: 'translateY(-100vh)', opacity: 0 } // Bergerak ke atas
+            ], {
+                duration: 3000 + Math.random() * 2000, // Durasi acak antara 3000ms dan 5000ms
+                easing: 'linear',
+                fill: 'forwards'
+            });
+
+// Menghapus partikel setelah animasi selesai
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    </script>
+</body>
+</html>
+
